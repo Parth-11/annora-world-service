@@ -10,6 +10,10 @@ import (
 func main() {
 	router := chi.NewRouter()
 
+	router.Get("/", func(resp http.ResponseWriter, req *http.Request) {
+		resp.Write([]byte("Welcome to World Service"))
+	})
+
 	router.Get("/hello", func(resp http.ResponseWriter, req *http.Request) {
 		resp.Write([]byte("Hello World"))
 	})
