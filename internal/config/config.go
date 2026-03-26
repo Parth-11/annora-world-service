@@ -22,15 +22,15 @@ func Load() *Config {
 			URL:                mustGetEnv("DATABASE_URL"),
 			MaxOpenConnections: getInt("DB_MAX_OPEN_CONS", 10),
 		},
-		Cache: CacheConfig{
-			Addr:       getEnv("REDIS_URL", "localhost:6379"),
-			Passwd:     getEnv("REDIS_PASSWORD", ""),
-			DB:         getInt("REDIS_DB", 0),
-			MaxRetries: getInt("REDIS_MAX_RETRIES", 3),
-		},
-		Queue: QueueConfig{
-			Addr:    getEnv("KAFKA_ADDR", "localhost:9092"),
-			Timeout: getDuration("KAFKA_TIMEOUT", 5*time.Second),
-		},
+		// Cache: CacheConfig{
+		// 	Addr:       getEnv("REDIS_URL", "localhost:6379"),
+		// 	Passwd:     getEnv("REDIS_PASSWORD", ""),
+		// 	DB:         getInt("REDIS_DB", 0),
+		// 	MaxRetries: getInt("REDIS_MAX_RETRIES", 3),
+		// },
+		// Queue: QueueConfig{
+		// 	Addr:    getEnv("KAFKA_ADDR", "localhost:9092"),
+		// 	Timeout: getDuration("KAFKA_TIMEOUT", 5*time.Second),
+		// },
 	}
 }

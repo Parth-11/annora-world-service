@@ -2,7 +2,12 @@ package app
 
 import (
 	"context"
+	"log"
 	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
+	"time"
 
 	"github.com/Parth-11/annora-world-service/internal/config"
 	"github.com/Parth-11/annora-world-service/internal/handlers/https"
@@ -41,5 +46,28 @@ func New(cfg *config.Config) (*App, error) {
 }
 
 func (a *App) Start() error {
+	stop := make(chan os.Signal, 1)
+	signal.Notify(stop, os.Interrupt, syscall.SIGTERM)
+
+	go func() {
+		log.Printf("World Service listening on %s\n", a.Server.Addr)
+
+		if err := a.Server.ListenAndServe(); err != nil && err == http.ErrServerClosed {
+			log.Fatalf("HTTP server error: %v\n", err)
+		}
+	}()
+
+	<-stop
+	log.Println("Shutdown signal recieved")
+
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	if err := a.Server.Shutdown(ctx); err != nil {
+		log.Printf("Server shutdown failed %v\n", err)
+		return err
+	}
+
+	log.Println("World service stopped gracefully")
 	return nil
 }
