@@ -1,24 +1,24 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+	"log"
 
-	"github.com/go-chi/chi/v5"
+	"github.com/Parth-11/annora-world-service/internal/app"
+	"github.com/Parth-11/annora-world-service/internal/config"
+	"github.com/joho/godotenv"
 )
 
 func main() {
-	router := chi.NewRouter()
+	_ = godotenv.Load()
 
-	router.Get("/", func(resp http.ResponseWriter, req *http.Request) {
-		resp.Write([]byte("Welcome to World Service"))
-	})
+	cfg := config.Load()
+	server, err := app.New(cfg)
 
-	router.Get("/hello", func(resp http.ResponseWriter, req *http.Request) {
-		resp.Write([]byte("Hello World"))
-	})
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	fmt.Println("Server Started at http://localhost:3000")
-
-	http.ListenAndServe(":3000", router)
+	if err := server.Start(); err != nil {
+		log.Fatal(err)
+	}
 }
