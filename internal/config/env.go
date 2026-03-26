@@ -1,6 +1,7 @@
 package config
 
 import (
+	"net"
 	"os"
 	"strconv"
 	"time"
@@ -45,6 +46,19 @@ func getInt(key string, fallback int) int {
 		}
 
 		return val
+	}
+
+	return fallback
+}
+
+func getNetAddr(key string, fallback net.Addr) net.Addr {
+	if v := os.Getenv(key); v != "" {
+		addr, err := net.ResolveTCPAddr("tcp", v)
+		if err != nil {
+			panic("Invalid net addr for " + key)
+		}
+
+		return addr
 	}
 
 	return fallback
