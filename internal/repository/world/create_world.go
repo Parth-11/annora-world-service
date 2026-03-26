@@ -18,7 +18,7 @@ func (repo *WorldRepo) CreateWorld(ctx context.Context, world *models.World, cre
 	query := `
 		INSERT INTO worlds (
 			id,name,description,creator_id,cover_img,visibility,
-			status,memeber_count
+			status,member_count
 		) VALUES (
 			$1,$2,$3,$4,$5,$6,$7,1
 		)

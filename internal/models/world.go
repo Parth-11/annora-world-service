@@ -32,11 +32,11 @@ type World struct {
 	ID          uuid.UUID `json:"id" db:"id"`
 	Name        string    `json:"name" db:"name"`
 	Description string    `json:"description,omitempty" db:"description"`
-	CreatorID   uuid.UUID `json:"creator_id" db:"creator_user_id"`
+	CreatorID   uuid.UUID `json:"creator_id" db:"creator_id"`
 
 	Visibility  Visibility `json:"visibility" db:"visibility"`
 	MemberCount int        `json:"member_count" db:"member_count"`
-	CoverImg    string     `json:"cover_img,omitempty" db:"cover_image_url"`
+	CoverImg    string     `json:"cover_img,omitempty" db:"cover_img"`
 
 	Status WorldStatus `json:"status" db:"status"`
 

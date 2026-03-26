@@ -1,0 +1,477 @@
+1.  Worlds  as  Structured  Lore  Graphs  
+A  world  is  just:  
+●  Places  ●  Species  ●  Artifacts  ●  Factions  ●  Events  
+Each  is  a  node  with  a  variable  schema  (certain  parameters  are  required,  such  as  type,  
+name,
+ 
+etc.)
+.
+ 
+Example:  Flora  Entry  {    "type":  "flora",    "name":  "Silverbloom",    "traits":  ["glows  at  night",  "poisonous  pollen"],    "native_to":  ["Moonvale"],    "created_by":  "user_id",    "canon_status":  "accepted"  }   Other  custom  parameters  can  be  referenced  under  events  or  while  writing  the  wiki.    
+2.  Canon  Is  Decided  by  Voting  
+Flow  
+1.  A  member  proposes  a  new  entry  2.  It  enters  “Pending  Lore”  3.  Community  votes:  ○  Accept  into  canon  ○  Reject  ○  Send  for  revision  
+Rules  
+●  Voting  weight  =  reputation  ●  Low-rep  users  can  still  propose  
+
+●  Nothing  is  permanent  instantly  
+This  replaces:  
+●  Editors  ●  Mods  ●  Lore  masters  
+ 
+3.  “Exploration”  Without  Simulation  
+Instead  of  someone  walking  around  the  world:  
+Users  do:  
+●  Browse  interconnected  lore  nodes  ●  Follow  links:  ○  City  →  Creature  →  Event  →  Artifact  ●  Discover  stories  through  relationships  
+This  is  closer  to:  
+●  Tolkien  appendices  ●  Wiki  rabbit  holes  ●  Dark  Souls  environmental  storytelling  
+No  AI  pathfinding.  No  movement.  
+ 
+4.  Events  as  Story  Anchors  (Not  Quests)  
+Events  are  historical  moments ,  not  live  gameplay.  
+Example  
+Event:  The  Fall  of  Moonvale  
+●  Date  (fictional)  ●  Involved  factions  ●  Consequences  ●  Linked  places  &  creatures  
+Events:  
+
+●  Can  be  proposed  ●  Voted  into  canon  ●  Referenced  by  future  entries  
+This  creates  timeline  depth  without  mechanics.  
+ 
+5.  Storytelling  via  “Story  Threads”  
+Instead  of  roleplay  or  AI  narration:  
+Story  Thread  
+●  A  constrained  storytelling  format:  ○  1  paragraph  per  user  ○  Max  500  chars  ○  Must  reference  existing  canon  nodes  
+Backend  enforcement  
+●  Users  must  select:  ○  Location  ○  Event  context  ○  Characters  involved  
+This  prevents  chaos  and  keeps  consistency.  
+ 
+6.  Light  Quests  =  Writing  Prompts  
+Quests  are  prompts ,  not  missions.  
+Examples:  
+●  “Write  a  story  involving  a  forbidden  place”  ●  “Describe  a  creature  feared  by  sailors”  ●  “Create  an  artifact  tied  to  an  ancient  event”  
+Completion:  
+●  Unlocks  cosmetic  badges  ●  Gives  reputation  
+
+●  Adds  lore  entries  
+ 
+8.  Minimal  AI  Usage  (Optional,  Safe,  Cheap)  
+AI  can  be  used  only  for:  
+●  Grammar  cleanup  (optional)  ●  Auto-linking  related  entries  ●  Summarizing  seasons  
+AI  NEVER:  
+●  Decides  canon  ●  Creates  lore  ●  Plays  characters  
+ 
+9.  How  does  the  story  progress?  Each  month,  an  event  drop  occurs,  during  which  a  poll  is  started  to  decide  on  the  title  of  the  
+event
+ 
+(the
+ 
+poll
+ 
+runs
+ 
+for
+ 
+2-3
+ 
+days).
+ 
+After
+ 
+that,
+ 
+the
+ 
+community
+ 
+enters
+ 
+the
+ 
+Event
+ 
+Phase,
+ 
+during
+ 
+which
+ 
+they
+ 
+reference
+ 
+various
+ 
+lore
+ 
+entries
+ 
+and
+ 
+create
+ 
+nodes
+ 
+(consequences,
+ 
+discoveries,
+ 
+etc).
+ 
+This
+ 
+process
+ 
+lasts
+ 
+for
+ 
+about
+ 
+a
+ 
+week.
+ 
+Then
+ 
+comes
+ 
+the
+ 
+Story
+ 
+Phase,
+ 
+which
+ 
+again
+ 
+lasts
+ 
+for
+ 
+about
+ 
+a
+ 
+week,
+ 
+during
+ 
+which
+ 
+the
+ 
+community
+ 
+can
+ 
+come
+ 
+together
+ 
+and
+ 
+write
+ 
+the
+ 
+Story
+ 
+surrounding
+ 
+the
+ 
+event
+ 
+in
+ 
+forms
+ 
+of
+ 
+Quests
+ 
+created
+ 
+by
+ 
+moderators
+ 
+or
+ 
+through
+ 
+polls
+ 
+in
+ 
+general
+ 
+(here
+ 
+the
+ 
+event
+ 
+nodes
+ 
+and
+ 
+lore
+ 
+items
+ 
+can
+ 
+be
+ 
+referenced)
+  Other  than  the  event  drop,  users  can  maintain  a  wiki  on  each  lore  entry  as  they  like,  with  the  
+consent
+ 
+of
+ 
+the
+ 
+entire
+ 
+community
+ 
+
+User  Flow  Diagrams  
+ 
+1.  High-Level  User  Flow  Diagram  (Textual)  
+This  shows  how  a  user  moves  through  the  app  without  AI  or  admin  intervention.  
+[User  Joins  World]          |          v  [World  Home]    ├─  Browse  Lore  Graph    │      ├─  Place    │      ├─  Species    │      ├─  Artifact    │      ├─  Faction    │      └─  Events    |    ├─  Pending  Lore    │      ├─  Propose  New  Entry    │      └─  Vote  on  Entries    |    ├─  Story  Threads    │      └─  Write  (Constrained)    |    ├─  Quests  (Writing  Prompts)    │      └─  Participate  /  Complete    |    └─  Event  Hub  (Monthly)          ├─  Event  Title  Poll          ├─  Event  Phase          └─  Story  Phase    
+2.  Lore  Entry  Lifecycle  (Node-Level  Flow)  
+This  applies  to  Places,  Species,  Artifacts,  Factions,  and  Events .  
+[User  Creates  Lore  Entry]  
+
+        |          v  [Pending  Lore  Queue]          |          ├─  Vote:  Accept  ──────────── ▶  [Canon  Lore  Node]          |          ├─  Vote:  Revise  ──────────── ▶  [Editable  Draft  →  Resubmit]          |          └─  Vote:  Reject  ──────────── ▶  [Archived  /  Visible  History]   
+Key  rules  
+●  Voting  weight  =  reputation  ●  Entry  must  reference  at  least  one  existing  node  (except  seed  worlds)  ●  Canon  entries  become  linkable  everywhere  
+ 
+3.  Browsing  &  “Exploration”  Flow  (No  
+Simulation)
+ 
+[Open  World  Map  /  Index]          |          v  [Select  Lore  Node]          |          ├─  View  Details          ├─  View  Linked  Nodes          │      ├─  Appears  In  Events          │      ├─  Related  Species          │      ├─  Artifacts  Found  Here          │      └─  Factions  Active          |          └─  Jump  to  Another  Node    
+4.  Monthly  Event  Drop  –  System  Flow  
+Diagram
+ 
+
+This  is  the  heart  of  story  progression .  
+[Start  of  Month]          |          v  [Event  Title  Poll  (2–3  days)]          |          v  [Event  Phase  (7  days)]          |          v  [Story  Phase  (7  days)]          |          v  [Event  Finalised  →  Canon]          |          v  [World  Timeline  Updated]   
+Everything  is  time-boxed  and  automatic .  
+ 
+5.  Example:  Full  Event  Drop  Flow  
+(Concrete)
+ 
+Let’s  walk  through  an  actual  example  in  a  fantasy  world.  
+ 
+Phase  0:  World  Context  (Already  Exists)  
+Canon  Lore  Nodes:  
+●  Place:  Moonvale  ●  Species:  Night  Serpents  ●  Artifact:  The  Ashen  Bell  ●  Faction:  The  Veiled  Council  
+ 
+
+Phase  1:  Event  Title  Poll  (2–3  Days)  
+System  Action  App  creates  an  Event  Slot :  
+Event
+ 
+ID:
+ 
+2025-04
+ Status:  Title  Voting  
+Community  Poll  
+“Name  the  upcoming  event”  
+●  A)  The  Fall  of  Moonvale  ●  B)  The  Night  the  Bell  Rang  ●  C)  The  Serpent  Uprising  
+Result  
+✅  The  Fall  of  Moonvale  wins  
+Event  node  is  now:  
+{    "type":  "event",    "name":  "The  Fall  of  Moonvale",    "status":  "in_progress"  }    
+Phase  2:  Event  Phase  (1  Week)  
+What  users  can  do  
+They  add  structured  consequences  and  discoveries ,  not  stories  yet.  
+Examples  of  Allowed  Submissions  
+●  A  new  Place:  
+“The
+ 
+Ruined
+ 
+Lower
+ 
+District”
+ ●  A  new  Species  variant:  
+“Ash-Touched
+ 
+Serpents”
+ ●  A  new  Artifact:  
+“Charred
+ 
+Council
+ 
+Seals”
+ 
+
+●  Event  consequences:  ○  Population  loss  ○  Faction  collapse  ○  Territory  changes  
+Each  submission:  
+●  Must  reference  The  Fall  of  Moonvale  ●  Enters  Pending  Lore  ●  Gets  voted  into  canon  
+Backend  Rule  
+Only  nodes  linked  to  the  active  event  can  be  submitted  during  this  phase.  
+ 
+Phase  3:  Story  Phase  (1  Week)  
+Now  the  world  is  structurally  ready  —  time  for  narrative.  
+Story  Threads  Open  
+Each  thread  requires:  
+●  Location:  (dropdown)  ●  Event:  The  Fall  of  Moonvale  (locked)  ●  Referenced  nodes:  (multi-select)  
+Example  Story  Thread  
+Thread  Title:  The  Last  Night  at  the  Gate  
+User  contributions:  
+●  1  paragraph  each  ●  Max  500  characters  ●  Must  reference  ≥2  canon  nodes  
+Example  contribution:  
+“As  the  Ashen  Bell  echoed  through  the  Ruined  Lower  District,  the  Veiled  Council  
+vanished
+ 
+into
+ 
+the
+ 
+smoke,
+ 
+leaving
+ 
+Moonvale
+ 
+to
+ 
+the
+ 
+serpents.”
+ 
+ 
+
+Phase  4:  Event  Finalisation  
+System  Auto-Action  
+●  Event  marked  Complete  ●  Timeline  entry  generated  ●  Summary  created  (optional  AI-assisted)  
+{    "event":  "The  Fall  of  Moonvale",    "status":  "canon",    "linked_nodes":  18,    "stories":  6  }   
+World  State  Update  
+●  Moonvale  is  flagged  as  “Ruined”  ●  New  lore  becomes  permanent  reference  material  
+ 
+6.  Outside  Event  Drops  (Normal  Time)  
+At  any  time:  
+●  Users  can:  ○  Edit  the  wiki  text  of  canon  nodes  ○  Propose  new  nodes  ○  Add  references  ●  Changes  require:  ○  Community  vote  ○  Revision  cycle  if  disputed  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+  Service  Name  
+Language  
+Responsibilities  Rationale  Dependencies  
+Auth  Service  
+Golang  -  User  registration,  login/logout.  -  JWT  token  generation/validation.  -  Basic  profile  updates  (e.g.,  username,  email).  -  Password  reset,  OAuth  integrations  if  needed.  
+Handles  security  and  entry  point  for  all  users.  Golang  for  secure,  fast  auth.  Keeps  it  separate  to  avoid  bloating  other  services  with  auth  logic.  
+None  (standalone,  but  calls  User  Service  for  profile  sync).  
+User  Service  
+JavaScript  (Node.js)  
+-  Manage  user  profiles,  reputation  calculation  (based  on  contributions,  votes).  -  Badges/unlocks  from  quests.  -  User  roles  (e.g.,  moderators  for  quest  creation).  -  Reputation-weighted  voting  logic  (query  reputation  during  votes).  
+User  data  is  relational  and  event-driven  (e.g.,  real-time  updates  on  reputation).  JS  excels  at  async  operations.  Separated  from  auth  for  scalability.  
+Auth  Service  (for  verification),  Vote  Service  (to  update  reputation  post-vote).  
+World  Service  
+Golang  -  Create/join  worlds.  -  Manage  world  metadata  (e.g.,  seed  nodes  for  new  worlds).  -  User  memberships  in  worlds.  -  World  timelines  and  summaries.  
+Worlds  are  containers  for  lore;  this  service  acts  as  a  high-level  orchestrator.  Golang  for  efficient  handling  of  hierarchical  data.  
+Lore  Service  (for  node  linking  within  worlds),  Event  Service  (for  timeline  updates).  
+
+Lore  Service  
+Golang  -  CRUD  for  lore  nodes  (places,  species,  artifacts,  factions,  events).  -  Node  schemas/validation  (e.g.,  required  fields  like  type,  name).  -  Linking  nodes  (relationships  in  graph  DB).  -  Pending  lore  queue  management.  -  Wiki  edits  on  canon  nodes  (with  version  history).  
+Core  of  the  app—the  structured  graph.  Golang  +  graph  DB  driver  (e.g.,  neo4j-go)  for  performant  queries/traversals.  Isolated  to  focus  on  data  integrity.  
+User  Service  (for  creator  IDs/reputation),  Vote  Service  (to  move  from  pending  to  canon).  
+Vote  Service  
+JavaScript  (Node.js)  
+-  Create/vote  on  polls  (e.g.,  lore  entries,  event  titles).  -  Tally  votes  with  reputation  weighting.  -  Vote  outcomes  (accept,  reject,  revise).  -  Time-boxed  voting  (e.g.,  2-3  days  for  event  polls).  
+Voting  is  time-sensitive  and  collaborative;  JS  for  real-time  updates  via  WebSockets  if  needed  (e.g.,  live  vote  counts  in  Flutter).  Easy  integration  with  queues  for  async  tallying.  
+User  Service  (reputation  weights),  Lore  Service  (update  node  status  post-vote),  Event  Service  (for  event-specific  polls).  
+Event  Service  
+Golang  -  Monthly  event  drops:  scheduling,  phase  management  (title  poll,  event  phase,  story  phase,  finalization).  -  Enforce  phase  rules  (e.g.,  only  event-linked  submissions  during  event  phase).  -  Auto-actions:  start/end  phases,  update  world  timeline.  -  Polls  for  event  titles/quests.  
+Events  drive  progression  and  are  time-boxed/automated.  Golang  for  reliable  scheduling  (e.g.,  with  cron  jobs  or  Temporal  workflows).  Handles  orchestration  across  phases.  
+Vote  Service  (for  polls),  Lore  Service  (new  nodes  during  phases),  Story  Service  (narrative  in  story  phase).  
+
+Story  Service  
+JavaScript  (Node.js)  
+-  Manage  story  threads:  creation,  contributions  (1  para/user,  max  500  chars,  reference  checks).  -  Validate  references  to  canon  nodes.  -  Quest  management:  prompts  creation  (by  mods/polls),  submissions,  completions.  -  Backend  enforcement  (e.g.,  dropdowns  for  locations/events).  
+Storytelling  is  collaborative  and  constraint-heavy;  JS  for  handling  real-time  contributions  (e.g.,  via  Socket.io  for  live  thread  updates).  Focuses  on  narrative  without  touching  core  lore.  
+Lore  Service  (node  references),  User  Service  (reputation/badges),  Event  Service  (lock  to  active  events).  
+Notification  Service  
+JavaScript  (Node.js)  
+-  Push  notifications  (e.g.,  vote  results,  phase  starts,  new  contributions).  -  Email/SMS  for  key  events  (e.g.,  reputation  changes).  -  In-app  alerts  via  Firebase  or  similar.  
+Event-driven  and  scalable;  JS  with  queues  (e.g.,  RabbitMQ)  for  async  delivery.  Keeps  notifications  decoupled  to  avoid  slowing  core  services.  
+All  services  (subscribes  to  events  like  vote  outcomes  or  phase  changes  via  pub/sub).  
+Search  &  Browse  Service  (Optional,  if  complex  queries  grow)  
+Golang  -  Graph  queries  for  browsing  (e.g.,  linked  nodes,  relationships).  -  Search  lore  by  keywords,  types.  -  "Exploration"  flows  without  simulation.  
+If  lore  graphs  get  large,  dedicate  for  optimized  queries.  Golang  for  performance  on  graph  traversals.  Start  by  folding  into  Lore  Service  if  simple.  
+Lore  Service  (data  source).  
+
+AI  Service  (Optional,  minimal)  
+JavaScript  (Node.js)  
+-  Grammar  cleanup,  auto-linking  entries,  summarizing  seasons/events.  -  Integrate  with  safe  APIs  (e.g.,  OpenAI  for  non-creative  tasks).  -  Ensure  AI  never  creates/decides  canon.  
+Kept  optional  and  isolated  per  your  spec.  JS  for  easy  API  integrations.  Only  called  on-demand.  
+Lore  Service  (for  entries  to  process),  Event  Service  (summaries).  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+========================================================================
+ 
+ 
+ 
+ 
+ 
+ Service  Name  Language  Explanation  of  Choice  
+Auth  Service  Golang  Golang  is  ideal  here  due  to  its  strong  security  features,  fast  execution  for  token  generation/validation,  and  low  overhead  for  handling  authentication  requests,  which  are  critical  and  frequent.  It's  statically  typed,  reducing  bugs  in  security-sensitive  code,  and  performs  well  under  load  compared  to  JS,  which  could  introduce  more  runtime  errors.  
+
+User  Service  JavaScript  (Node.js)  
+JS  is  chosen  for  its  async  nature,  perfect  for  handling  real-time  reputation  updates  and  badge  unlocks  triggered  by  events.  The  service  involves  relational  data  and  frequent  queries  (e.g.,  weighting  votes),  where  Node's  non-blocking  I/O  excels.  Its  ecosystem  (e.g.,  libraries  like  Mongoose  for  MongoDB,  if  used)  enables  quick  prototyping  of  user  profiles,  outweighing  Go's  performance  since  this  isn't  compute-heavy.  
+World  Service  Golang  This  service  manages  hierarchical  metadata  and  timelines,  benefiting  from  Golang's  concurrency  for  efficient  world  joins/memberships  queries.  It's  data-oriented  with  potential  for  complex  aggregations  (e.g.,  summaries),  where  Golang's  speed  and  memory  efficiency  shine  over  JS,  especially  for  long-running  apps.  
+Lore  Service  Golang  As  the  core  graph-handling  service  (CRUD,  linking,  validation),  Golang  is  a  natural  fit  for  performance-critical  graph  operations  (e.g.,  with  Neo4j  drivers).  Its  goroutines  handle  concurrent  node  edits/searches  efficiently,  and  static  typing  ensures  schema  integrity.  JS  would  be  slower  for  large  graphs,  making  Golang  better  for  scalability.  
+Vote  Service  Golang  Reconsidered  from  JS:  Voting  involves  time-sensitive  tallies  with  reputation  weighting,  which  can  spike  during  events.  Golang's  concurrency  and  math  performance  make  it  superior  for  accurate,  fast  computations  under  load.  While  JS  handles  async  well,  Golang  avoids  callback  hell  and  provides  better  reliability  for  dispute-free  outcomes.  
+Event  Service  Golang  Events  require  precise  scheduling  (e.g.,  cron-like  phase  transitions)  and  orchestration  across  services.  Golang's  standard  library  for  time  management  and  workflows  (e.g.,  Temporal  integration)  makes  it  reliable  for  automated,  time-boxed  processes.  JS  could  work  but  risks  timing  inconsistencies  in  high-concurrency  scenarios.  
+Story  Service  JavaScript  (Node.js)  
+This  collaborative  service  benefits  from  JS's  event-driven  model  for  real-time  thread  contributions  (e.g.,  via  Socket.io).  Validating  references  and  enforcing  constraints  (e.g.,  char  limits)  is  async-heavy,  where  Node  excels.  Golang  could  do  it,  but  JS's  flexibility  speeds  up  development  for  narrative  features.  
+
+Notification  Service  
+JavaScript  (Node.js)  
+JS  is  perfect  for  pub/sub  patterns  and  async  delivery  (e.g.,  with  Redis  or  RabbitMQ).  It  handles  real-time  pushes  efficiently,  and  libraries  like  Nodemailer  or  Firebase  integrate  seamlessly.  Golang  could  be  used,  but  JS's  ecosystem  makes  it  faster  to  implement  and  scale  for  user-facing  alerts.  
+Search  &  Browse  Service  (Optional)  
+Golang  If  implemented  separately  for  complex  graph  searches,  Golang's  performance  in  query  optimisation  and  traversal  algorithms  makes  it  the  choice.  It  handles  large  datasets  better  than  JS,  ensuring  responsive  "exploration"  flows  without  lag.  
+AI  Service  (Optional)  
+JavaScript  (Node.js)  
+Minimal  AI  tasks  (e.g.,  grammar  checks  via  API  calls)  are  integration-focused,  where  JS's  vast  NPM  ecosystem  (e.g.,  OpenAI  SDK)  allows  easy,  async  handling.  It's  optional  and  low-load,  so  JS's  rapid  development  trumps  Golang's  efficiency  here.    
+Parth  -  ●  User  Service  (done,  needs  to  be  deployed  and  tested)  ●  Vote  Service  ●  World  Service  ●  Story  Service   
+Aditya  -  ●  Notification  Service  ●  Auth  Service  (done,  needs  to  be  deployed  and  tested)  ●  Lore  Service  ●  Event  Service   
+
+Schema:  
+WorldNode  type  WorldNode  struct  {   ID  string  `json:”id”`   Name  string  `json:”name”`   CreatedAt  time.Time  `json:”created_at”`   UpdatedAt  time.Time  `json:”updated_at”  }  
+LoreNode  type  LoreNode  struct  {   ID               string       `json:"id"`   Type             NodeType     `json:"type"`   Name             string       `json:"name"`   CreatedBy        string       `json:"created_by"`   CreatorUsername  string       `json:"creator_username"`   CreatedAt        time.Time    `json:"created_at"`   UpdatedAt        time.Time    `json:"updated_at"`   CanonStatus      CanonStatus  `json:"canon_status"`   WorldID          string       `json:"world_id"`  }   type  NodeType  string  const  (   NodeTypePlace      NodeType  =  "place"   NodeTypeSpecies    NodeType  =  "species"   NodeTypeCharacter  NodeType  =  "character"   NodeTypeArtifact   NodeType  =  "artifact"   NodeTypeFaction    NodeType  =  "faction"   NodeTypeEvent      NodeType  =  "event"  )   type  CanonStatus  string  const  (   CanonStatusAccepted  CanonStatus  =  "accepted"   CanonStatusRejected  CanonStatus  =  "rejected"   CanonStatusPending   CanonStatus  =  "pending"  )   
+
+Relation  type  Relation  struct  {   FromID           string        `json:"from_id"`   To               *LoreNode     `json:"to"`   Rel              RelationType  `json:"rel"`   Description      string        `json:"description"`   CreatedBy        string        `json:"created_by"`   CreatorUsername  string        `json:"creator_username"`   CreatedAt        time.Time     `json:"created_at"`   UpdatedAt        time.Time     `json:"updated_at"`  }  
+Allowed  Relation  Map  (67  allowed  relations)  var  AllowedRelations  =  map[NodeType]map[NodeType]map[RelationType]bool{   NodeTypePlace:  {    NodeTypePlace:  {     "LOCATED_IN":    true,     "CONNECTED_TO":  true,    },    NodeTypeSpecies:  {     "HABITAT_OF":  true,    },    NodeTypeArtifact:  {     "HOUSES":         true,     "DISCOVERED_AT":  true,    },    NodeTypeFaction:  {     "CONTROLLED_BY":  true,     "CONTESTED_BY":   true,    },    NodeTypeEvent:  {     "SITE_OF":       true,     "DESTROYED_IN":  true,    },   },   NodeTypeSpecies:  {    NodeTypePlace:  {     "NATIVE_TO":    true,     "MIGRATED_TO":  true,    },    NodeTypeFaction:  {     "OPPRESSED_BY":         true,     "DOMINANT_SPECIES_OF":  true,  
+
+  },    NodeTypeEvent:  {     "EMERGED_IN":    true,     "DECIMATED_IN":  true,    },   },   NodeTypeCharacter:  {    NodeTypePlace:  {     "BORN_IN":     true,     "RESIDES_IN":  true,     "DIED_IN":     true,    },    NodeTypeCharacter:  {     "ALLY_OF":   true,     "ENEMY_OF":  true,     "KIN_OF":    true,    },    NodeTypeArtifact:  {     "WIELDS":     true,     "CREATED":    true,     "DESTROYED":  true,    },    NodeTypeFaction:  {     "MEMBER_OF":    true,     "LEADER_OF":    true,     "FOUNDER_OF":   true,     "BETRAYER_OF":  true,    },    NodeTypeEvent:  {     "INVOLVED_IN":  true,     "CAUSED":       true,     "DIED_IN":      true,    },   },   NodeTypeArtifact:  {    NodeTypePlace:  {     "DISCOVERED_AT":  true,     "SEALED_IN":      true,     "DESTROYED_AT":   true,     "FORGED_IN":      true,    },    NodeTypeCharacter:  {     "OWNED_BY":    true,     "WIELDED_BY":  true,  
+
+   "CREATED_BY":  true,    },    NodeTypeFaction:  {     "SYMBOL_OF":   true,     "GUARDED_BY":  true,    },    NodeTypeEvent:  {     "USED_IN":       true,     "CREATED_FOR":   true,     "DESTROYED_IN":  true,    },   },   NodeTypeFaction:  {    NodeTypePlace:  {     "CONTROLS":    true,     "FOUNDED_AT":  true,    },    NodeTypeArtifact:  {     "OWNS":   true,     "SEEKS":  true,    },    NodeTypeFaction:  {     "ALLIED_WITH":   true,     "ENEMIES_WITH":  true,     "VASSAL_OF":     true,     "LIEGE_OF":      true,    },    NodeTypeEvent:  {     "INVOLVED_IN":       true,     "INITIATED":         true,     "COLLAPSED_DURING":  true,    },   },   NodeTypeEvent:  {    NodeTypePlace:  {     "OCCURRED_AT":  true,     "ALTERED":      true,     "DESTROYED":    true,    },    NodeTypeCharacter:  {     "INVOLVED":  true,     "KILLED":    true,    },    NodeTypeSpecies:  {  
+
+   "AFFECTED":   true,     "CREATED":    true,     "DECIMATED":  true,    },    NodeTypeFaction:  {     "DISSOLVED":  true,     "CREATED":    true,    },    NodeTypeEvent:  {     "TRIGGERED":     true,     "SUCCEEDED_BY":  true,     "PRECEDED_BY":   true,    },   },  }  
