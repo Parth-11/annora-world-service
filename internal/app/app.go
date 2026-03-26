@@ -50,7 +50,7 @@ func (a *App) Start() error {
 	signal.Notify(stop, os.Interrupt, syscall.SIGTERM)
 
 	go func() {
-		log.Printf("World Service listening on %s\n", a.Server.Addr)
+		log.Printf("World Service listening on http://localhost%s\n", a.Server.Addr)
 
 		if err := a.Server.ListenAndServe(); err != nil && err == http.ErrServerClosed {
 			log.Fatalf("HTTP server error: %v\n", err)
