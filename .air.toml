@@ -1,0 +1,20 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+cmd = "go build -o ./tmp/main.exe ./cmd/world-service"
+bin = "./tmp/main.exe"
+full_bin = "./tmp/main.exe"
+include_ext = ["go", "tpl", "tmpl", "html", "env"]
+exclude_dir = ["tmp", "vendor", ".git"]
+exclude_regex = ["_test\\.go"]
+delay = 300
+stop_on_error = true
+send_interrupt = true
+kill_delay = 500
+
+[log]
+time = true
+
+[screen]
+clear_on_rebuild = true

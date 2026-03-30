@@ -3,7 +3,7 @@ package https
 import (
 	"net/http"
 
-	worldhandler "github.com/Parth-11/annora-world-service/internal/handlers/https/world"
+	worldhandler "github.com/Parth-11/annora-world-service/internal/api/http/world"
 	"github.com/go-chi/chi/v5"
 )
 
