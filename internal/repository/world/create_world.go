@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/Parth-11/annora-world-service/internal/models"
+	"github.com/Parth-11/annora-world-service/internal/domain/models"
 	"github.com/google/uuid"
 )
 

@@ -9,12 +9,12 @@ import (
 	"syscall"
 	"time"
 
+	https "github.com/Parth-11/annora-world-service/internal/api/http"
+	worldhandler "github.com/Parth-11/annora-world-service/internal/api/http/world"
 	"github.com/Parth-11/annora-world-service/internal/config"
-	"github.com/Parth-11/annora-world-service/internal/handlers/https"
-	worldhandler "github.com/Parth-11/annora-world-service/internal/handlers/https/world"
+	worldservice "github.com/Parth-11/annora-world-service/internal/domain/service"
 	"github.com/Parth-11/annora-world-service/internal/infrastructure/db"
 	worldrepo "github.com/Parth-11/annora-world-service/internal/repository/world"
-	worldservice "github.com/Parth-11/annora-world-service/internal/service/world"
 )
 
 type App struct {
