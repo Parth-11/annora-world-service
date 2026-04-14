@@ -1,13 +1,8 @@
 package config
 
-import (
-	"time"
-
-	"github.com/segmentio/kafka-go"
-)
+import "time"
 
 type QueueConfig struct {
-	Addr      string
-	Timeout   time.Duration
-	Transport kafka.RoundTripper
+	Addr    string
+	Timeout time.Duration
 }

@@ -28,9 +28,9 @@ func Load() *Config {
 		// 	DB:         getInt("REDIS_DB", 0),
 		// 	MaxRetries: getInt("REDIS_MAX_RETRIES", 3),
 		// },
-		// Queue: QueueConfig{
-		// 	Addr:    getEnv("KAFKA_ADDR", "localhost:9092"),
-		// 	Timeout: getDuration("KAFKA_TIMEOUT", 5*time.Second),
-		// },
+		Queue: QueueConfig{
+			Addr:    getEnv("RABBITMQ_URL", ""),
+			Timeout: getDuration("RABBITMQ_TIMEOUT", 5*time.Second),
+		},
 	}
 }
