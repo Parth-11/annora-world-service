@@ -2,8 +2,6 @@ package auth
 
 import (
 	"time"
-
-	"github.com/Parth-11/annora-world-service/internal/api/http/middleware"
 )
 
 type Claims struct {
@@ -15,15 +13,15 @@ type Claims struct {
 
 func (c *Claims) Validate(expectedIss, expectedAud string) error {
 	if c.Sub == "" {
-		return middleware.ErrAuthMissingSUB
+		return ErrMissingSub
 	}
 
 	if time.Now().Unix() > c.Exp {
-		return middleware.ErrAuthTokenExp
+		return ErrTokenExpired
 	}
 
 	if c.Iss != expectedIss {
-		return middleware.ErrAuthInvalidIss
+		return ErrInvalidIssuer
 	}
 
 	return nil
